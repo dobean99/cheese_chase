@@ -1,0 +1,111 @@
+{  
+    "@@locale": "pt",
+    "appName": "Cheese Chase",
+    "@appName": {
+    "description": "The application name"
+  },
+  "balloonIn": "Balloon in",
+  "@balloonIn": {
+    "description": "Balloon in"
+  },
+  "theSky": "the sky",
+  "@theSky": {
+    "description": "the sky"
+  },
+  "play": "Jogar",
+  "@play": {
+    "description": "Jogar"
+  },
+  "pause": "Pausa",
+  "@pause": {
+    "description": "Pause"
+  },
+  "youTurn": "Você vira",
+  "@youTurn": {
+    "description": "You turn!"
+  },
+  "computerIsPlaying": "O computador está tocando...",
+  "@computerIsPlaying": {
+    "description": "Computer is playing"
+  },
+  "youWin": "VOCÊ GANHOU!",
+  "@youWin": {
+    "description": "You win!"
+  },
+  "youLose": "VOCÊ PERDEU!",
+  "@youLose": {
+    "description": "You lose!"
+  },
+  "win": "Ganhar",
+  "@win": {
+    "description": "win"
+  },
+  "lose": "Perder",
+  "@lose": {
+    "description": "lose"
+  },
+  "player": "Player",
+  "@player": {
+    "description": "player"
+  },
+  "computer": "Computer",
+  "@computer": {
+    "description": "Computer"
+  },
+  "rounds": "Rodadas",
+  "@rounds": {
+    "description": "Rounds"
+  },
+  "points": "Pontos",
+  "@points": {
+    "description": "Points"
+  },
+  "theme": "tema",
+  "@theme": {
+    "description": "theme"
+  },
+  "sound": "Som",
+  "@sound": {
+    "description": "sound"
+  },
+  "vibration": "vibracao",
+  "@vibration": {
+    "description": "vibration"
+  },
+  "language": "Idioma",
+  "@language": {
+    "description": "language"
+  },
+  "select": "Selecione",
+  "@select": {
+    "description": "select"
+  },
+  "statistics": "Statistics",
+  "@statistics": {
+    "description": "statistics"
+  },
+  "on": "On",
+  "@on": {
+    "description": "on"
+  },
+  "off": "Off",
+  "@off": {
+    "description": "off"
+  },
+  "english": "English",
+  "@english": {
+    "description": "english"
+  },
+  "portuguese": "Portuguese",
+  "@portuguese": {
+    "description": "portuguese"
+  },
+  "russian": "Russian",
+  "@russian": {
+    "description": "russian"
+  },
+  "settings": "ajustes",
+  "@settings": {
+    "description": "Settings"
+  }
+}
