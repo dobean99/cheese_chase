@@ -11,6 +11,9 @@ class PngAssets {
   static String get volumeIcon => 'volume_icon'.png;
   static String get volumeOffIcon => 'volume_off_icon'.png;
 
+  static String get backIcon => 'back_icon'.png;
+  static String get watchOut => 'watch_out'.png;
+
   static String get engIcon => 'eng'.png;
   static String get porIcon => 'por'.png;
   static String get rusIcon => 'rus'.png;
