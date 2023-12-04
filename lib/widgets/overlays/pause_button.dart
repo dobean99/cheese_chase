@@ -1,7 +1,7 @@
+import 'package:cheese_chase/widgets/commons/rounded_gradient_stroke_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cheese_chase/config/assets/png_assets.dart';
 import 'package:cheese_chase/game/cheese_chase.dart';
-import 'package:cheese_chase/widgets/commons/circle_stroke_button.dart';
 import 'package:cheese_chase/widgets/overlays/pause_menu.dart';
 
 class PauseButton extends StatelessWidget {
@@ -13,11 +13,12 @@ class PauseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.topRight,
+      alignment: Alignment.topLeft,
       child: Padding(
-        padding: const EdgeInsets.only(right: 20.0, top: 20.0),
-        child: CircleStrokeButton(
+        padding: const EdgeInsets.only(left: 20.0, top: 20.0),
+        child: RoundedGradientStrokeButton(
           width: 50,
+          height: 50,
           child: Image.asset(PngAssets.pauseIcon),
           onPressed: () {
             game.pauseEngine();

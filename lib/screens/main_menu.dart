@@ -7,8 +7,6 @@ import 'package:cheese_chase/config/assets/png_assets.dart';
 import 'package:cheese_chase/screens/statistics_screen.dart';
 import 'package:cheese_chase/widgets/commons/base_layout.dart';
 
-// Represents the main menu screen of Spacescape, allowing
-// players to start the game or modify in-game settings.
 class MainMenu extends StatelessWidget {
   const MainMenu({Key? key}) : super(key: key);
 
@@ -43,7 +41,7 @@ class MainMenu extends StatelessWidget {
                     text: "Cheese shop",
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
+                    Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => const ShopScreen(),
                       ),
@@ -54,7 +52,8 @@ class MainMenu extends StatelessWidget {
                   height: 10,
                 ),
                 RoundedGradientStrokeButton(
-                    isCircleButton: true,
+                    width: 50,
+                    // isCircleButton: true,
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(

@@ -23,7 +23,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(6),
         ),
       ),
-      fontFamily: "Bebas-Neue-Pro",
+      fontFamily: "Brocil",
       inputDecorationTheme: InputDecorationTheme(
         fillColor: Colors.white,
         border: inputBorder,
@@ -37,7 +37,7 @@ class AppTheme {
 
 //dark theme
   static final ThemeData darkTheme = ThemeData(
-    fontFamily: "Bebas-Neue-Pro",
+    fontFamily: "Brocil",
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: AppConstants.titleFontSize,

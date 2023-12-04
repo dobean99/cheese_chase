@@ -22,7 +22,7 @@ class StrokeText extends StatelessWidget {
             fontWeight: FontWeight.w700,
             foreground: Paint()
               ..style = PaintingStyle.stroke
-              ..strokeWidth = strokeWidth ?? 2
+              ..strokeWidth = strokeWidth ?? 4
               ..color = AppColors.whiteColor,
           ),
         ),

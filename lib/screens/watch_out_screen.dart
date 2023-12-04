@@ -48,7 +48,7 @@ class WatchOutScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
               child: RoundedGradientStrokeButton(
-                  isCircleButton: true,
+                  width: 50,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },

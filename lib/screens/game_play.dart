@@ -7,7 +7,7 @@ import 'package:cheese_chase/widgets/overlays/home_button.dart';
 import 'package:cheese_chase/widgets/overlays/pause_button.dart';
 import 'package:cheese_chase/widgets/overlays/pause_menu.dart';
 
-CheeseChase _theDartboard = CheeseChase();
+CheeseChase _cheeseChase = CheeseChase();
 
 class GamePlay extends StatelessWidget {
   const GamePlay({Key? key}) : super(key: key);
@@ -17,8 +17,6 @@ class GamePlay extends StatelessWidget {
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async => false,
-        // GameWidget is useful to inject the underlying
-        // widget of any class extending from Flame's Game class.
         child: GameWidget(
           backgroundBuilder: (context) {
             return Container(
@@ -32,21 +30,10 @@ class GamePlay extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              // child: Center(
-              //   child: Text(
-              //     context.l10n!.appName.toUpperCase(),
-              //     style: const TextStyle(
-              //         color: Color(
-              //           0xFFFFA91F,
-              //         ),
-              //         fontSize: 50),
-              //   ),
-              // ),
             );
           },
-          game: _theDartboard,
-          // Initially only pause button overlay will be visible.
-          initialActiveOverlays: const [HomeButton.id, PauseButton.id],
+          game: _cheeseChase,
+          initialActiveOverlays: const [PauseButton.id],
           overlayBuilderMap: {
             HomeButton.id: (BuildContext context, CheeseChase game) =>
                 HomeButton(
