@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:cheese_chase/config/assets/png_assets.dart';
 import 'package:cheese_chase/game/cheese_chase.dart';
 import 'package:cheese_chase/widgets/overlays/game_over_menu.dart';
-import 'package:cheese_chase/widgets/overlays/home_button.dart';
 import 'package:cheese_chase/widgets/overlays/pause_button.dart';
 import 'package:cheese_chase/widgets/overlays/pause_menu.dart';
 
@@ -25,7 +24,7 @@ class GamePlay extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    PngAssets.backgroundImage,
+                    PngAssets.backgroundGameplay,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -35,10 +34,6 @@ class GamePlay extends StatelessWidget {
           game: _cheeseChase,
           initialActiveOverlays: const [PauseButton.id],
           overlayBuilderMap: {
-            HomeButton.id: (BuildContext context, CheeseChase game) =>
-                HomeButton(
-                  game: game,
-                ),
             PauseButton.id: (BuildContext context, CheeseChase game) =>
                 PauseButton(
                   game: game,

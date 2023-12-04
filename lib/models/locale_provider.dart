@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:cheese_chase/config/assets/png_assets.dart';
 
 class LocaleProvider with ChangeNotifier {
   Locale _locale = const Locale('en');
@@ -12,13 +11,13 @@ class LocaleProvider with ChangeNotifier {
   }
 
   getIcon(Locale locale) {
-    switch (locale.languageCode) {
-      case 'en':
-        return PngAssets.engIcon;
-      case 'pt':
-        return PngAssets.porIcon;
-      case 'ru':
-        return PngAssets.rusIcon;
-    }
+    // switch (locale.languageCode) {
+    //   case 'en':
+    //     return PngAssets.engIcon;
+    //   case 'pt':
+    //     return PngAssets.porIcon;
+    //   case 'ru':
+    //     return PngAssets.rusIcon;
+    // }
   }
 }

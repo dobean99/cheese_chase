@@ -4,7 +4,6 @@ import 'package:cheese_chase/widgets/commons/rounded_gradient_stroke_button.dart
 import 'package:cheese_chase/widgets/commons/stroke_text.dart';
 import 'package:flutter/material.dart';
 import 'package:cheese_chase/config/assets/png_assets.dart';
-import 'package:cheese_chase/screens/statistics_screen.dart';
 import 'package:cheese_chase/widgets/commons/base_layout.dart';
 
 class MainMenu extends StatelessWidget {
@@ -54,13 +53,7 @@ class MainMenu extends StatelessWidget {
                 RoundedGradientStrokeButton(
                     width: 50,
                     // isCircleButton: true,
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const StatisticsScreen(),
-                        ),
-                      );
-                    },
+                    onPressed: () {},
                     child: Image.asset(PngAssets.volumeIcon)),
               ],
             ),

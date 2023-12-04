@@ -13,6 +13,7 @@ class RoundedGradientStrokeButton extends StatelessWidget {
   final bool isCircleButton;
   final bool isEnabled;
   final double? paddingChild;
+  final bool isBackgroundMenu;
 
   const RoundedGradientStrokeButton({
     super.key,
@@ -25,6 +26,7 @@ class RoundedGradientStrokeButton extends StatelessWidget {
     this.isCircleButton = false,
     this.isEnabled = true,
     this.paddingChild,
+    this.isBackgroundMenu = false,
   });
 
   @override
@@ -40,7 +42,9 @@ class RoundedGradientStrokeButton extends StatelessWidget {
                 shape: BoxShape.circle,
                 image: DecorationImage(
                     image: AssetImage(
-                      PngAssets.buttonBackground,
+                      isBackgroundMenu
+                          ? PngAssets.backgroundMenu
+                          : PngAssets.buttonBackground,
                     ),
                     fit: BoxFit.cover),
                 border: Border.all(
@@ -51,7 +55,9 @@ class RoundedGradientStrokeButton extends StatelessWidget {
             : BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(
-                      PngAssets.buttonBackground,
+                      isBackgroundMenu
+                          ? PngAssets.backgroundMenu
+                          : PngAssets.buttonBackground,
                     ),
                     fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(

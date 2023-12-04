@@ -16,12 +16,14 @@ class PauseMenu extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.blackColor.withAlpha(100),
       body: Center(
-        child: RoundedGradientStrokeButton(
-          height: 240,
-          width: 230,
-          child: Stack(
-            children: [
-              Column(
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            RoundedGradientStrokeButton(
+              isBackgroundMenu: true,
+              height: 240,
+              width: 230,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   RoundedGradientStrokeButton(
@@ -53,9 +55,9 @@ class PauseMenu extends StatelessWidget {
                   ),
                 ],
               ),
-              Positioned(child: Image.asset(PngAssets.pauseText)),
-            ],
-          ),
+            ),
+            Positioned(child: Image.asset(PngAssets.pauseText)),
+          ],
         ),
       ),
     );
