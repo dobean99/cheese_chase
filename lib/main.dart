@@ -1,3 +1,7 @@
+import 'package:cheese_chase/models/cheese_data.dart';
+import 'package:cheese_chase/models/locale_provider.dart';
+import 'package:cheese_chase/models/player_data.dart';
+import 'package:cheese_chase/models/settings.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,8 +10,6 @@ import 'package:provider/provider.dart';
 import 'package:cheese_chase/config/l10n/l10n.dart';
 import 'package:cheese_chase/config/theme/app_theme.dart';
 import 'package:cheese_chase/screens/loading_screen.dart';
-
-import 'models/models.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,9 +21,9 @@ Future<void> main() async {
   runApp(
     MultiProvider(
         providers: [
-          FutureProvider<Score>(
-            create: (BuildContext context) => getScore(),
-            initialData: Score(totalPlayerWin: 10, totalRounds: 5),
+          FutureProvider<PlayerData>(
+            create: (BuildContext context) => getPlayerData(),
+            initialData: PlayerData.fromMap(PlayerData.defaultData),
           ),
           FutureProvider<Settings>(
               create: (BuildContext context) => getSettings(),
@@ -30,8 +32,8 @@ Future<void> main() async {
         builder: (context, child) {
           return MultiProvider(
             providers: [
-              ChangeNotifierProvider<Score>.value(
-                value: Provider.of<Score>(context),
+              ChangeNotifierProvider<PlayerData>.value(
+                value: Provider.of<PlayerData>(context),
               ),
               ChangeNotifierProvider<Settings>.value(
                 value: Provider.of<Settings>(context),
@@ -74,16 +76,27 @@ class MyApp extends StatelessWidget {
 Future<void> initHive() async {
   await Hive.initFlutter();
   Hive.registerAdapter(SettingsAdapter());
-  Hive.registerAdapter(ScoreAdapter());
+  Hive.registerAdapter(PlayerDataAdapter());
+  Hive.registerAdapter(CheeseTypeAdapter());
 }
 
-Future<Score> getScore() async {
-  final box = await Hive.openBox<Score>(Score.scoresBox);
-  final scoreData = box.get(Score.scoresData);
-  if (scoreData == null) {
-    box.put(Score.scoresData, Score(totalRounds: 0, totalPlayerWin: 0));
+/// This function reads the stored [PlayerData] from disk.
+Future<PlayerData> getPlayerData() async {
+  // Open the player data box and read player data from it.
+  final box = await Hive.openBox<PlayerData>(PlayerData.playerDataBox);
+  final playerData = box.get(PlayerData.playerDataKey);
+
+  // If player data is null, it means this is a fresh launch
+  // of the game. In such case, we first store the default
+  // player data in the player data box and then return the same.
+  if (playerData == null) {
+    box.put(
+      PlayerData.playerDataKey,
+      PlayerData.fromMap(PlayerData.defaultData),
+    );
   }
-  return box.get(Score.scoresData)!;
+
+  return box.get(PlayerData.playerDataKey)!;
 }
 
 Future<Settings> getSettings() async {

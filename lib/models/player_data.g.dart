@@ -1,35 +1,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'score.dart';
+part of 'player_data.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ScoreAdapter extends TypeAdapter<Score> {
+class PlayerDataAdapter extends TypeAdapter<PlayerData> {
   @override
   final int typeId = 0;
 
   @override
-  Score read(BinaryReader reader) {
+  PlayerData read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Score(
-      totalRounds: fields[0] as int,
-      totalPlayerWin: fields[1] as int,
-    );
+    return PlayerData(
+      cheeseType: fields[0] as CheeseType,
+      ownedCheeses: (fields[1] as List).cast<CheeseType>(),
+      money: fields[3] as int,
+    ).._highScore = fields[2] as int;
   }
 
   @override
-  void write(BinaryWriter writer, Score obj) {
+  void write(BinaryWriter writer, PlayerData obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.totalRounds)
+      ..write(obj.cheeseType)
       ..writeByte(1)
-      ..write(obj.totalPlayerWin);
+      ..write(obj.ownedCheeses)
+      ..writeByte(2)
+      ..write(obj._highScore)
+      ..writeByte(3)
+      ..write(obj.money);
   }
 
   @override
@@ -38,7 +43,7 @@ class ScoreAdapter extends TypeAdapter<Score> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ScoreAdapter &&
+      other is PlayerDataAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

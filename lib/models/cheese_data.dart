@@ -1,14 +1,16 @@
 // This class represents all the data
 // which defines a Cheese.
+import 'package:cheese_chase/config/assets/assets.dart';
 import 'package:hive/hive.dart';
+part 'cheese_data.g.dart';
 
-class Cheese {
+class CheeseData {
   final String name;
   final int cost;
   final int spriteId;
   final String assetPath;
 
-  const Cheese({
+  const CheeseData({
     required this.name,
     required this.cost,
     required this.spriteId,
@@ -17,85 +19,85 @@ class Cheese {
 
   /// Given a cheeseType, this method returns a corresponding
   /// Cheese object which holds all the details of that Cheese.
-  static Cheese getCheeseByType(CheeseType cheeseType) {
+  static CheeseData getCheeseByType(CheeseType cheeseType) {
     /// It is highly unlikely that it [cheeses] does not contain given [cheeseType].
     /// But if that ever happens, we will just return data for [cheeseType.Chedar].
     return cheeses[cheeseType] ?? cheeses.entries.first.value;
   }
 
   /// This map holds all the meta-data of each [CheeseType].
-  static const Map<CheeseType, Cheese> cheeses = {
-    CheeseType.freeA: Cheese(
+  static Map<CheeseType, CheeseData> cheeses = {
+    CheeseType.freeA: CheeseData(
       name: 'Free A',
       cost: 0,
       spriteId: 0,
-      assetPath: 'assets/images/cheese_free_A.png',
+      assetPath: PngAssets.cheeseFreeA,
     ),
-    CheeseType.freeB: Cheese(
+    CheeseType.freeB: CheeseData(
       name: 'Free B',
       cost: 0,
       spriteId: 1,
-      assetPath: 'assets/images/cheese_free_B.png',
+      assetPath: PngAssets.cheeseFreeB,
     ),
-    CheeseType.chedar: Cheese(
+    CheeseType.chedar: CheeseData(
       name: 'Chedar',
       cost: 200,
       spriteId: 2,
-      assetPath: 'assets/images/cheese_A.png',
+      assetPath: PngAssets.cheeseA,
     ),
-    CheeseType.swissCheese: Cheese(
+    CheeseType.swissCheese: CheeseData(
       name: 'Swiss Cheese',
       cost: 250,
       spriteId: 3,
-      assetPath: 'assets/images/cheese_B.png',
+      assetPath: PngAssets.cheeseB,
     ),
-    CheeseType.mozzarella: Cheese(
+    CheeseType.mozzarella: CheeseData(
       name: 'Mozzarella',
       cost: 300,
       spriteId: 4,
-      assetPath: 'assets/images/cheese_C.png',
+      assetPath: PngAssets.cheeseC,
     ),
-    CheeseType.camembert: Cheese(
+    CheeseType.camembert: CheeseData(
       name: 'Camembert',
       cost: 350,
       spriteId: 5,
-      assetPath: 'assets/images/cheese_D.png',
+      assetPath: PngAssets.cheeseD,
     ),
-    CheeseType.feta: Cheese(
+    CheeseType.feta: CheeseData(
       name: 'Feta',
       cost: 400,
       spriteId: 6,
-      assetPath: 'assets/images/cheese_E.png',
+      assetPath: PngAssets.cheeseE,
     ),
-    CheeseType.pecorino: Cheese(
+    CheeseType.pecorino: CheeseData(
       name: 'Pecorino',
       cost: 450,
       spriteId: 7,
-      assetPath: 'assets/images/cheese_F.png',
+      assetPath: PngAssets.cheeseF,
     ),
-    CheeseType.gouda: Cheese(
+    CheeseType.gouda: CheeseData(
       name: 'Gouda',
       cost: 500,
       spriteId: 8,
-      assetPath: 'assets/images/cheese_G.png',
+      assetPath: PngAssets.cheeseG,
     ),
-    CheeseType.maasdam: Cheese(
+    CheeseType.maasdam: CheeseData(
       name: 'Maasdam',
       cost: 550,
       spriteId: 9,
-      assetPath: 'assets/images/cheese_H.png',
+      assetPath: PngAssets.cheeseH,
     ),
-    CheeseType.brie: Cheese(
+    CheeseType.brie: CheeseData(
       name: 'Brie',
       cost: 600,
       spriteId: 10,
-      assetPath: 'assets/images/cheese_I.png',
+      assetPath: PngAssets.cheeseI,
     ),
-    CheeseType.dorblu: Cheese(
+    CheeseType.dorblu: CheeseData(
       name: 'Dorblu',
       cost: 650,
       spriteId: 11,
-      assetPath: 'assets/images/cheese_J.png',
+      assetPath: PngAssets.cheeseJ,
     ),
   };
 }

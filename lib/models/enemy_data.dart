@@ -1,5 +1,5 @@
 class EnemyData {
-  final int sprite;
+  final String sprite;
   const EnemyData({
     required this.sprite,
   });

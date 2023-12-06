@@ -1,6 +1,7 @@
-import 'package:cheese_chase/models/cheese.dart';
+import 'package:cheese_chase/models/cheese_data.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter/material.dart';
+part 'player_data.g.dart';
 
 // This class represents all the persistent data that we
 // might want to store for tracking player progress.
@@ -67,7 +68,7 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
   // for the first time.
   static Map<String, dynamic> defaultData = {
     'currentCheeseType': CheeseType.freeA,
-    'ownedCheeseTypes': [CheeseType.freeA,CheeseType.freeB],
+    'ownedCheeseTypes': [CheeseType.freeA, CheeseType.freeB],
     'highScore': 0,
     'money': 0,
   };
@@ -79,7 +80,7 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
 
   /// Returns true if player has enough money to by given [CheeseType].
   bool canBuy(CheeseType cheeseType) {
-    return (money >= Cheese.getCheeseByType(cheeseType).cost);
+    return (money >= CheeseData.getCheeseByType(cheeseType).cost);
   }
 
   /// Returns true if player's current Cheese type is same as given [CheeseType].
@@ -90,7 +91,7 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
   /// Buys the given [CheeseType] if player has enough money and does not already own it.
   void buy(CheeseType cheeseType) {
     if (canBuy(cheeseType) && (!isOwned(cheeseType))) {
-      money -= Cheese.getCheeseByType(cheeseType).cost;
+      money -= CheeseData.getCheeseByType(cheeseType).cost;
       ownedCheeses.add(cheeseType);
       notifyListeners();
 
@@ -108,4 +109,3 @@ class PlayerData extends ChangeNotifier with HiveObjectMixin {
     save();
   }
 }
-

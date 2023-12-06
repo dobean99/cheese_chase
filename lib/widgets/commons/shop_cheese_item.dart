@@ -37,7 +37,7 @@ class ShopCheesItem extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               child: Column(
                 children: [
-                  Image.asset(PngAssets.cheeseA),
+                  Image.asset(PngAssets.cheeseAIcon),
                   StrokeText(text: itemName)
                 ],
               ),

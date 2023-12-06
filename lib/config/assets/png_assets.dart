@@ -20,12 +20,27 @@ class PngAssets {
   static String get pauseText => 'pause_text'.png;
 
   static String get pauseIcon => 'pause_icon'.png;
-  static String get cheeseA => 'cheese_A'.png;
+  static String get cheeseAIcon => 'cheese_A'.png;
   static String get cheese => 'cheese'.png;
 
 //get only file name .png ==> example "blue_ballon.png"
   static String get player => 'player'.src;
   static String get plusCheese => 'plus_cheese'.src;
+  static String get cheeseFreeA => 'cheese_free_A'.src;
+  static String get cheeseFreeB => 'cheese_free_B'.src;
+  static String get cheeseA => 'cheese_A'.src;
+  static String get cheeseB => 'cheese_B'.src;
+  static String get cheeseC => 'cheese_C'.src;
+  static String get cheeseD => 'cheese_D'.src;
+  static String get cheeseE => 'cheese_E'.src;
+  static String get cheeseF => 'cheese_F'.src;
+  static String get cheeseG => 'cheese_G'.src;
+  static String get cheeseH => 'cheese_H'.src;
+  static String get cheeseI => 'cheese_I'.src;
+  static String get cheeseJ => 'cheese_J'.src;
+  static String get enemyA => 'enemy_A'.src;
+  static String get enemyB => 'enemy_B'.src;
+  static String get enemyC => 'enemy_C'.src;
   const PngAssets._();
 }
 

@@ -1,10 +1,9 @@
+import 'package:cheese_chase/models/settings.dart';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:cheese_chase/config/assets/audio_assets.dart';
 import 'package:cheese_chase/game/cheese_chase.dart';
-
-import '../../models/models.dart';
 
 class AudioPlayerComponent extends Component
     with HasGameReference<CheeseChase> {
