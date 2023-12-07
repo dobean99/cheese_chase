@@ -20,19 +20,31 @@ class Enemy extends SpriteComponent
     return (Vector2.random(_random) - Vector2(0.5, -1)).normalized();
   }
 
-  Enemy(
-     {required this.spritePath,
+  Enemy({
+    required this.spritePath,
     required this.enemyData,
     required Vector2? position,
     required Vector2? size,
   }) : super(position: position, size: size) {
-    angle = pi;
+    angle = pi * _random.nextDouble();
   }
 
   @override
   Future<void> onLoad() async {
     super.onLoad();
     sprite = await Sprite.load(spritePath);
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    final shape = CircleHitbox.relative(
+      0.8,
+      parentSize: size,
+      position: size / 2,
+      anchor: Anchor.center,
+    );
+    add(shape);
   }
 
   @override

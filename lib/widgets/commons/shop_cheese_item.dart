@@ -18,6 +18,7 @@ class ShopCheesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
             decoration: BoxDecoration(
@@ -33,8 +34,8 @@ class ShopCheesItem extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 20.0, vertical: 10.0),
               child: Column(
                 children: [
                   Image.asset(PngAssets.cheeseAIcon),

@@ -11,28 +11,39 @@ class ShopScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseLayout(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Image.asset(
-                PngAssets.cheeseShop,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Image.asset(
+                  PngAssets.cheeseShop,
+                ),
               ),
-            ),
-            const CheeseCollected(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ShopCheesItem(
-                  itemName: 'Chedar',
-                  assetImage: PngAssets.cheeseBackground,
-                  amount: 200,
-                )
-              ],
-            ),
-            Padding(
+              const CheeseCollected(),
+              Flexible(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 0,
+                    mainAxisSpacing: 40.0,
+                    mainAxisExtent: 150,
+                  ),
+                  itemBuilder: (_, index) => ShopCheesItem(
+                    itemName: 'Chedar',
+                    assetImage: PngAssets.cheeseBackground,
+                    amount: 200,
+                  ),
+                  itemCount: 10,
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            bottom: 0,
+            child: Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
               child: RoundedGradientStrokeButton(
                   width: 50,
@@ -41,8 +52,8 @@ class ShopScreen extends StatelessWidget {
                   },
                   child: Image.asset(PngAssets.backIcon)),
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

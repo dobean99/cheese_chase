@@ -12,7 +12,7 @@ class CheeseManager extends Component with HasGameReference<CheeseChase> {
   Random random = Random();
 
   CheeseManager() : super() {
-    _timer = Timer(1, onTick: _spawnCheese, repeat: true);
+    _timer = Timer(1, onTick: () {}, repeat: true);
     // for (int i = 0; i < 10; i++) {
     //   _spawnEnemy();
     // }
@@ -36,7 +36,6 @@ class CheeseManager extends Component with HasGameReference<CheeseChase> {
       Cheese cheese = Cheese(
         spritePath: cheeseData.assetPath,
         position: position,
-        size: initialSize,
       );
       cheese.anchor = Anchor.center;
 
@@ -48,6 +47,9 @@ class CheeseManager extends Component with HasGameReference<CheeseChase> {
   void onMount() {
     super.onMount();
     _timer.start();
+    for (int i = 0; i < 10; i++) {
+      _spawnCheese();
+    }
   }
 
   @override

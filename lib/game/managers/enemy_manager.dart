@@ -13,15 +13,12 @@ class EnemyManager extends Component with HasGameReference<CheeseChase> {
 
   EnemyManager() : super() {
     _timer = Timer(1, onTick: () {}, repeat: true);
-    for (int i = 0; i < 10; i++) {
-      _spawnEnemy();
-    }
   }
 
   void _spawnEnemy() {
     Vector2 initialSize = Vector2(64, 64);
-    Vector2 position =
-        Vector2(random.nextDouble() * 500, random.nextDouble() * 500);
+    Vector2 position = Vector2(
+        random.nextDouble() * game.size.x, random.nextDouble() * game.size.y);
 
     position.clamp(
       Vector2.zero() + initialSize / 2,
@@ -38,15 +35,15 @@ class EnemyManager extends Component with HasGameReference<CheeseChase> {
     );
 
     enemy.anchor = Anchor.center;
-    // if (game.buildContext != null) {
-    //   game.world.add(enemy);
-    // }
+    game.add(enemy);
   }
 
   @override
   void onMount() {
     super.onMount();
-    print(game.size.y);
+    for (int i = 0; i < 5; i++) {
+      _spawnEnemy();
+    }
 
     _timer.start();
   }

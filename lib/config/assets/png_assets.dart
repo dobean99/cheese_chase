@@ -26,6 +26,7 @@ class PngAssets {
 //get only file name .png ==> example "blue_ballon.png"
   static String get player => 'player'.src;
   static String get plusCheese => 'plus_cheese'.src;
+  static String get scoreBackground => 'score_background'.src;
   static String get cheeseFreeA => 'cheese_free_A'.src;
   static String get cheeseFreeB => 'cheese_free_B'.src;
   static String get cheeseA => 'cheese_A'.src;

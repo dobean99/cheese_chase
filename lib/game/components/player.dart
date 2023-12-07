@@ -8,13 +8,14 @@ import 'package:cheese_chase/models/player_data.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 // This component class represents the player character in game.
 class Player extends SpriteComponent
     with CollisionCallbacks, HasGameReference<CheeseChase>, KeyboardHandler {
   JoystickComponent joystick;
   late PlayerData _playerData;
-  int get score => _playerData.currentScore;
+  int get score => _playerData.money;
   final _random = Random();
 
   Vector2 getRandomVector() {
@@ -36,9 +37,6 @@ class Player extends SpriteComponent
   @override
   void onMount() {
     super.onMount();
-
-    // Adding a circular hitbox with radius as 0.8 times
-    // the smallest dimension of this components size.
     final shape = CircleHitbox.relative(
       0.8,
       parentSize: size,
@@ -47,7 +45,7 @@ class Player extends SpriteComponent
     );
     add(shape);
 
-    // _playerData = Provider.of<PlayerData>(game.buildContext!, listen: false);
+    _playerData = Provider.of<PlayerData>(game.buildContext!, listen: false);
   }
 
   @override
@@ -59,8 +57,7 @@ class Player extends SpriteComponent
       game.gameOver();
     }
     if (other is Cheese) {
-      print("onCollision");
-      // addToScore();
+      addToScore();
     }
   }
 
@@ -132,8 +129,6 @@ class Player extends SpriteComponent
   }
 
   void joystickAction() {}
-
-
 
   void reset() {
     position = size / 2;

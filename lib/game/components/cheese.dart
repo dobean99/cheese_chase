@@ -21,9 +21,8 @@ class Cheese extends SpriteComponent
   Cheese({
     required this.spritePath,
     required Vector2? position,
-    required Vector2? size,
-  }) : super(position: position, size: size) {
-    angle = pi;
+  }) : super(position: position) {
+    angle = pi * _random.nextDouble();
   }
 
   @override
@@ -33,10 +32,20 @@ class Cheese extends SpriteComponent
   }
 
   @override
+  void onMount() {
+    final shape = CircleHitbox.relative(
+      0.8,
+      parentSize: size,
+      position: size / 2,
+      anchor: Anchor.center,
+    );
+    add(shape);
+    super.onMount();
+  }
+
+  @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
-    print("collision");
-
     if (other is Player) {
       destroy();
     }

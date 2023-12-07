@@ -1,3 +1,4 @@
+import 'package:cheese_chase/widgets/commons/cheese_collected.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:cheese_chase/config/assets/png_assets.dart';
@@ -37,6 +38,14 @@ class GamePlay extends StatelessWidget {
             PauseButton.id: (BuildContext context, CheeseChase game) =>
                 PauseButton(
                   game: game,
+                ),
+            CheeseCollected.id: (BuildContext context, CheeseChase game) =>
+                const Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 20.0, top: 20.0),
+                    child: CheeseCollected(),
+                  ),
                 ),
             PauseMenu.id: (BuildContext context, CheeseChase game) => PauseMenu(
                   game: game,
