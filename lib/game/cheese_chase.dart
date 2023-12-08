@@ -10,7 +10,6 @@ import 'package:cheese_chase/widgets/overlays/game_over_menu.dart';
 import 'package:flutter/material.dart';
 
 class CheeseChase extends FlameGame with HasCollisionDetection {
-  late AudioPlayerComponent _audioPlayerComponent;
   late Player player;
   late EnemyManager _enemyManager;
   late CheeseManager _cheeseManager;
@@ -60,7 +59,6 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
       anchor: Anchor.centerLeft,
       priority: priorityLevel,
     );
-    _audioPlayerComponent = AudioPlayerComponent();
     final joystick = JoystickComponent(
       anchor: Anchor.bottomLeft,
       position: Vector2(30, size.y - 30),
@@ -81,7 +79,6 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
     _cheeseManager = CheeseManager();
 
     addAll([
-      _audioPlayerComponent,
       player,
       _enemyManager,
       _cheeseManager,
@@ -90,12 +87,6 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
       textStrokeWhite,
       textYellow,
     ]);
-  }
-
-  @override
-  void onAttach() {
-    _audioPlayerComponent.playBgm(AudioAssets.bgAudio);
-    super.onAttach();
   }
 
   @override
@@ -116,11 +107,5 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
     player.reset();
     _enemyManager.reset();
     _cheeseManager.reset();
-  }
-
-  @override
-  void onDetach() {
-    _audioPlayerComponent.stopBgm();
-    super.onDetach();
   }
 }

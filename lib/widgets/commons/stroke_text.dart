@@ -6,8 +6,9 @@ class StrokeText extends StatelessWidget {
     Key? key,
     required this.text,
     this.strokeWidth,
+    this.textSize,
   }) : super(key: key);
-
+  final double? textSize;
   final String text;
   final double? strokeWidth;
 
@@ -18,7 +19,7 @@ class StrokeText extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: textSize ?? 20,
             fontWeight: FontWeight.w700,
             foreground: Paint()
               ..style = PaintingStyle.stroke
@@ -34,8 +35,8 @@ class StrokeText extends StatelessWidget {
         //   },
         Text(
           text,
-          style: const TextStyle(
-            fontSize: 20,
+          style: TextStyle(
+            fontSize: textSize ?? 20,
             fontWeight: FontWeight.w700,
             color: AppColors.textTitleColor,
           ),

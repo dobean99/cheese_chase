@@ -3,11 +3,13 @@ class PngAssets {
   static String get logo => 'logo_text'.png;
   static String get cheeseShop => 'cheese_shop'.png;
   static String get youLoseText => 'you_lose_text'.png;
+  static String get collectMore => 'collect_more'.png;
 
   static String get backgroundImage => 'background_image'.png;
   static String get buttonBackground => 'button_background'.png;
   static String get backgroundGameplay => 'background_gameplay'.png;
   static String get backgroundMenu => 'background_menu'.png;
+  static String get notEnoughBackground => 'not_enough_background'.png;
 
   static String get cheeseBackground => 'cheese_background'.png;
   static String get playIcon => 'play_icon'.png;

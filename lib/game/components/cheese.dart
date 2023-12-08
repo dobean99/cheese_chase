@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:cheese_chase/game/cheese_chase.dart';
+import 'package:cheese_chase/game/components/audio_player_component.dart';
 import 'package:cheese_chase/game/components/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -8,7 +9,7 @@ import 'package:flame/components.dart';
 class Cheese extends SpriteComponent
     with CollisionCallbacks, HasGameReference<CheeseChase> {
   final _random = Random();
-
+  late AudioPlayerComponent audioplayer;
   final String spritePath;
   Vector2 getRandomVector() {
     return (Vector2.random(_random) - Vector2.random(_random)) * 500;
@@ -33,6 +34,7 @@ class Cheese extends SpriteComponent
 
   @override
   void onMount() {
+    audioplayer = AudioPlayerComponent();
     final shape = CircleHitbox.relative(
       0.8,
       parentSize: size,
@@ -53,6 +55,7 @@ class Cheese extends SpriteComponent
 
   // This method will destory this Cheese.
   void destroy() {
+    audioplayer.playBgm();
     removeFromParent();
   }
 }

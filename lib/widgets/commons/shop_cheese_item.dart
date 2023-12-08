@@ -9,11 +9,13 @@ class ShopCheesItem extends StatelessWidget {
   final String itemName;
   final String assetImage;
   final int amount;
+  final void Function()? onPress;
   const ShopCheesItem(
       {super.key,
       required this.itemName,
       required this.assetImage,
-      required this.amount});
+      required this.amount,
+      this.onPress});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class ShopCheesItem extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(
-                    assetImage,
+                    PngAssets.cheeseBackground,
                   ),
                   fit: BoxFit.cover),
               borderRadius: BorderRadius.circular(AppConstants.borderRadius),
@@ -34,12 +36,21 @@ class ShopCheesItem extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 20.0, vertical: 10.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               child: Column(
                 children: [
-                  Image.asset(PngAssets.cheeseAIcon),
-                  StrokeText(text: itemName)
+                  SizedBox(
+                    width: 60,
+                    height: 50,
+                    child: Image.asset(
+                      "assets/images/$assetImage",
+                    ),
+                  ),
+                  StrokeText(
+                    text: itemName,
+                    textSize: 12,
+                  )
                 ],
               ),
             )),
@@ -49,6 +60,7 @@ class ShopCheesItem extends StatelessWidget {
         RoundedGradientStrokeButton(
           paddingChild: 5,
           width: 100,
+          onPressed: onPress,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -59,7 +71,9 @@ class ShopCheesItem extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              StrokeText(text: amount.toString()),
+              StrokeText(
+                text: amount.toString(),
+              ),
             ],
           ),
         )
