@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:cheese_chase/game/cheese_chase.dart';
-import 'package:cheese_chase/game/components/audio_player_component.dart';
 import 'package:cheese_chase/game/components/player.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
