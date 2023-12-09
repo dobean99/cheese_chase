@@ -8,16 +8,17 @@ import 'package:cheese_chase/game/cheese_chase.dart';
 class AudioPlayerComponent extends Component
     with HasGameReference<CheeseChase> {
   @override
-  Future<void> onLoad() async {
+  void onLoad() async {
     await FlameAudio.audioCache.loadAll([AudioAssets.bgAudio]);
-    return super.onLoad();
+    return onLoad();
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
   }
 
   void playBgm() {
-    if (game.buildContext != null) {
-      if (Provider.of<Settings>(game.buildContext!, listen: false).bgm) {
-        FlameAudio.play(AudioAssets.bgAudio);
-      }
-    }
+    FlameAudio.play(AudioAssets.bgAudio);
   }
 }

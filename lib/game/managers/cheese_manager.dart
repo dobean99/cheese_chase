@@ -12,7 +12,7 @@ class CheeseManager extends Component with HasGameReference<CheeseChase> {
   Random random = Random();
 
   CheeseManager() : super() {
-    _timer = Timer(1, onTick: () {}, repeat: true);
+    _timer = Timer(5, onTick: _spawnCheese, repeat: true);
     // for (int i = 0; i < 10; i++) {
     //   _spawnEnemy();
     // }
@@ -61,22 +61,18 @@ class CheeseManager extends Component with HasGameReference<CheeseChase> {
   @override
   void update(double dt) {
     super.update(dt);
-    // Update timers with delta time to make them tick.
     _timer.update(dt);
   }
 
-  // Stops and restarts the timer. Should be called
-  // while restarting and exiting the game.
   void reset() {
     _timer.stop();
+    for (int i = 0; i < 5; i++) {
+      _spawnCheese();
+    }
     _timer.start();
   }
 
-  // Pauses spawn timer for 2 seconds when called.
   void freeze() {
     _timer.stop();
   }
-
-  /// A private list of all [cheeseData]s.
-  // static final List<CheeseData> _cheeseDataList = [];
 }

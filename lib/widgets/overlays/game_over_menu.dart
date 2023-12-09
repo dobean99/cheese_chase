@@ -34,8 +34,9 @@ class GameOverMenu extends StatelessWidget {
                         text: "Try again",
                       ),
                       onPressed: () {
-                        game.reset();
                         game.overlays.remove(GameOverMenu.id);
+                        game.reset();
+                        game.resumeEngine();
                       },
                     ),
                     const SizedBox(

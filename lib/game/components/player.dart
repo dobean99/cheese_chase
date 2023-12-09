@@ -2,9 +2,11 @@ import 'dart:math';
 
 import 'package:cheese_chase/config/config.dart';
 import 'package:cheese_chase/game/cheese_chase.dart';
+import 'package:cheese_chase/game/components/audio_player_component.dart';
 import 'package:cheese_chase/game/components/cheese.dart';
 import 'package:cheese_chase/game/components/enemy.dart';
 import 'package:cheese_chase/models/player_data.dart';
+import 'package:cheese_chase/models/settings.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +19,7 @@ class Player extends SpriteComponent
   late PlayerData _playerData;
   int get score => _playerData.money;
   final _random = Random();
+  late AudioPlayerComponent audioplayer;
 
   Vector2 getRandomVector() {
     return (Vector2.random(_random) - Vector2(0.5, -1)) * 200;
@@ -24,13 +27,13 @@ class Player extends SpriteComponent
 
   Player({
     required this.joystick,
+    required this.audioplayer,
     Vector2? position,
     Vector2? size,
   }) : super(position: position, size: size);
   @override
   void onLoad() async {
     sprite = await Sprite.load(PngAssets.player);
-
     return super.onLoad();
   }
 
@@ -51,12 +54,15 @@ class Player extends SpriteComponent
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollision(intersectionPoints, other);
-
-    // If other entity is an Enemy, reduce player's health by 10.
     if (other is Enemy) {
       game.gameOver();
     }
     if (other is Cheese) {
+      if (game.buildContext != null) {
+        if (Provider.of<Settings>(game.buildContext!, listen: false).bgm) {
+          audioplayer.playBgm();
+        }
+      }
       addToScore();
     }
   }
@@ -131,6 +137,6 @@ class Player extends SpriteComponent
   void joystickAction() {}
 
   void reset() {
-    position = size / 2;
+    position = game.size / 2;
   }
 }

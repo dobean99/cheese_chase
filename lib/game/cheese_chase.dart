@@ -1,5 +1,7 @@
 import 'package:cheese_chase/core/constants/app_colors.dart';
 import 'package:cheese_chase/game/components/audio_player_component.dart';
+import 'package:cheese_chase/game/components/cheese.dart';
+import 'package:cheese_chase/game/components/enemy.dart';
 import 'package:cheese_chase/game/components/player.dart';
 import 'package:cheese_chase/game/managers/cheese_manager.dart';
 import 'package:cheese_chase/game/managers/enemy_manager.dart';
@@ -16,12 +18,15 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
   late TextComponent textStrokeWhite;
   late TextComponent textYellow;
   late SpriteComponent scoreBackground;
+  late AudioPlayerComponent audioplayer;
+
   // @override
   // bool debugMode = true;
   @override
   Future<void> onLoad() async {
     super.onLoad();
     const priorityLevel = 5;
+    audioplayer = AudioPlayerComponent();
     Sprite scoreBG = await Sprite.load(PngAssets.scoreBackground);
     scoreBackground = SpriteComponent(
       sprite: scoreBG,
@@ -72,6 +77,7 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
     );
     player = Player(
       joystick: joystick,
+      audioplayer: audioplayer,
       size: Vector2(64, 64),
       position: size / 2,
     );
@@ -107,5 +113,11 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
     player.reset();
     _enemyManager.reset();
     _cheeseManager.reset();
+    children.whereType<Enemy>().forEach((enemy) {
+      enemy.removeFromParent();
+    });
+    children.whereType<Cheese>().forEach((cheese) {
+      cheese.removeFromParent();
+    });
   }
 }

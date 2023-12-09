@@ -7,13 +7,9 @@ import 'package:cheese_chase/models/enemy_data.dart';
 import 'package:flame/components.dart';
 
 class EnemyManager extends Component with HasGameReference<CheeseChase> {
-  late Timer _timer;
-
   Random random = Random();
 
-  EnemyManager() : super() {
-    _timer = Timer(1, onTick: () {}, repeat: true);
-  }
+  EnemyManager() : super();
 
   void _spawnEnemy() {
     Vector2 initialSize = Vector2(64, 64);
@@ -44,33 +40,12 @@ class EnemyManager extends Component with HasGameReference<CheeseChase> {
     for (int i = 0; i < 5; i++) {
       _spawnEnemy();
     }
-
-    _timer.start();
   }
 
-  @override
-  void onRemove() {
-    super.onRemove();
-    _timer.stop();
-  }
-
-  @override
-  void update(double dt) {
-    super.update(dt);
-    // Update timers with delta time to make them tick.
-    _timer.update(dt);
-  }
-
-  // Stops and restarts the timer. Should be called
-  // while restarting and exiting the game.
   void reset() {
-    _timer.stop();
-    _timer.start();
-  }
-
-  // Pauses spawn timer for 2 seconds when called.
-  void freeze() {
-    _timer.stop();
+    for (int i = 0; i < 5; i++) {
+      _spawnEnemy();
+    }
   }
 
   /// A private list of all [EnemyData]s.
