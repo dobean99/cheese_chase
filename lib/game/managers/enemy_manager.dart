@@ -15,7 +15,6 @@ class EnemyManager extends Component with HasGameReference<CheeseChase> {
     Vector2 initialSize = Vector2(64, 64);
     Vector2 position = Vector2(
         random.nextDouble() * game.size.x, random.nextDouble() * game.size.y);
-
     position.clamp(
       Vector2.zero() + initialSize / 2,
       Vector2(500, 500) - initialSize / 2,

@@ -106,13 +106,12 @@ class CheeseChase extends FlameGame with HasCollisionDetection {
   gameOver() {
     pauseEngine();
     overlays.add(GameOverMenu.id);
-    reset();
   }
 
   void reset() {
     player.reset();
-    _enemyManager.reset();
     _cheeseManager.reset();
+    _enemyManager.reset();
     children.whereType<Enemy>().forEach((enemy) {
       enemy.removeFromParent();
     });

@@ -39,7 +39,7 @@ class Enemy extends SpriteComponent
   void onMount() {
     super.onMount();
     final shape = CircleHitbox.relative(
-      0.8,
+      0.5,
       parentSize: size,
       position: size / 2,
       anchor: Anchor.center,

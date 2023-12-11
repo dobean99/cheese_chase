@@ -30,7 +30,7 @@ class Player extends SpriteComponent
     required this.audioplayer,
     Vector2? position,
     Vector2? size,
-  }) : super(position: position, size: size);
+  }) : super(position: position, size: size, angle: pi);
   @override
   void onLoad() async {
     sprite = await Sprite.load(PngAssets.player);
@@ -123,7 +123,7 @@ class Player extends SpriteComponent
     super.update(dt);
     if (joystick.direction != JoystickDirection.idle) {
       position.add(joystick.delta * dt);
-      angle = joystick.delta.screenAngle();
+      // angle = joystick.delta.screenAngle();
     }
     // Clamp position of player such that the player sprite does not go outside the screen size.
     position.clamp(
